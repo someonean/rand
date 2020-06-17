@@ -8,14 +8,22 @@ void stop(int s)
 	cont = 0;
 }
 
-int main()
+int main(int argc, char **argv)
 {
 	long num, lower, higher;
 
-	printf("Enter lower boundary: ");
-	scanf("%ld", &lower);
-	printf("Enter higher boundary: ");
-	scanf("%ld", &higher);
+	if(argc < 2)
+	{
+		printf("Enter lower boundary: ");
+		scanf("%ld", &lower);
+	}
+	else lower = atol(argv[1]);
+	if(argc < 3)
+	{
+		printf("Enter higher boundary: ");
+		scanf("%ld", &higher);
+	}
+	else higher = atol(argv[2]);
 	printf("Press control+C to get a random number.\n");
 	signal(SIGINT, stop);
 	cont = 1;
